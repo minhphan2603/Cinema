@@ -1,0 +1,82 @@
+<ng-container *ngIf="!(isSmall$ | async); else hiddenHeader">
+  <mat-toolbar
+    class="showed-header d-flex justify-content-between"
+    color="primary"
+  >
+    <div class="header-logo col-2">
+      <span>
+        <img
+          src="../../../assets/images/logo.png"
+          alt="Cinema logo"
+          width="50px"
+      /></span>
+    </div>
+    <div class="header-content col-6 d-flex justify-content-center">
+      <span class="header-content-item">Trang chu</span>
+      <span class="header-content-item">Lich chieu</span>
+      <span class="header-content-item">Tin tuc</span>
+    </div>
+    <div
+      class="header-authentication d-flex align-items-center col-4 justify-content-end"
+    >
+      <ng-container *ngIf="isAuthenticated; else anonymousTemp">
+        <span class="header-authentication-item" matTooltip="Tai Khoan">
+          <i class="material-icons">account_circle</i>
+        </span>
+        <span class="header-authentication-item">Dang xuat</span>
+      </ng-container>
+      <ng-template #anonymousTemp>
+        <span class="header-authentication-item d-flex align-items-center"
+          ><i class="material-icons mr-2">input</i>Dang nhap</span
+        >
+        <span class="header-authentication-item">Dang ki</span>
+      </ng-template>
+    </div>
+  </mat-toolbar>
+</ng-container>
+<ng-template #hiddenHeader>
+  <div class="hidden-header">
+    <div class="header-logo d-flex justify-content-center align-items-center">
+      <img
+        src="../../../assets/images/logo.png"
+        alt="Cinema logo"
+        width="50px"
+      />
+    </div>
+    <div
+      class="header-menu-toggle d-flex justify-content-center align-items-center"
+    >
+      <button mat-button (click)="drawMenu()" *ngIf="!isDrawed">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <div
+      class="header-menu"
+      [ngStyle]="
+        isDrawed
+          ? { transform: 'translateX(-100%)' }
+          : { transform: 'translateX(0)' }
+      "
+    >
+      <mat-toolbar>
+        <button mat-button (click)="drawMenu()">
+          <mat-icon>menu</mat-icon>Menu
+        </button>
+        <mat-toolbar-row>
+          <span>Trang chu</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+          <span>Phim dang chieu</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+          <span>Phim sap chieu</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+          <span>Tin tuc</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="back-drop" *ngIf="isDrawed" (click)="drawMenu()"></div>
+  </div>
+</ng-template>
