@@ -21,11 +21,15 @@ export class HeaderComponent {
     private router: Router
   ) {}
 
-  changeRoute(path: string) {
-    this.router.navigate([path]).then(val => console.log(val));
-  }
-
   drawMenu() {
     this.isDrawed = !this.isDrawed;
+  }
+
+  scrollTo(path, id) {
+    this.router.navigate([path], { state: { scrollTo: id } }).then(val => {
+      if (val === null) {
+        document.getElementById(id).scrollIntoView();
+      }
+    });
   }
 }

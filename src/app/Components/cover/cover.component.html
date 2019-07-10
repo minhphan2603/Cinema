@@ -1,1 +1,5 @@
-<p>cover works!</p>
+<ngb-carousel class="cover">
+  <ng-template ngbSlide *ngFor="let movie of movieList">
+    <img src="{{ movie.HinhAnh }}" alt="Now Showing Movie" />
+  </ng-template>
+</ngb-carousel>

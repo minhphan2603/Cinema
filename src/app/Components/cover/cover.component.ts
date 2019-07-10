@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-cover',
-  templateUrl: './cover.component.html',
-  styleUrls: ['./cover.component.scss']
+  selector: "app-cover",
+  templateUrl: "./cover.component.html",
+  styleUrls: ["./cover.component.scss"]
 })
 export class CoverComponent implements OnInit {
+  @Input() movieList: Array<any>;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

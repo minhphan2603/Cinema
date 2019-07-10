@@ -8,12 +8,16 @@
         <img
           src="../../../assets/images/logo.png"
           alt="Cinema logo"
-          width="50px"
+          width="95px"
       /></span>
     </div>
     <div class="header-content col-6 d-flex justify-content-center">
-      <span class="header-content-item">Trang chu</span>
-      <span class="header-content-item">Lich chieu</span>
+      <span class="header-content-item">
+        <a (click)="scrollTo('/', 'cover')">Trang chu</a>
+      </span>
+      <span class="header-content-item">
+        <a (click)="scrollTo('/', 'showTime')">Lich chieu</a>
+      </span>
       <span class="header-content-item">Tin tuc</span>
     </div>
     <div
@@ -36,20 +40,25 @@
 </ng-container>
 <ng-template #hiddenHeader>
   <div class="hidden-header">
-    <div class="header-logo d-flex justify-content-center align-items-center">
-      <img
-        src="../../../assets/images/logo.png"
-        alt="Cinema logo"
-        width="50px"
-      />
-    </div>
-    <div
-      class="header-menu-toggle d-flex justify-content-center align-items-center"
-    >
-      <button mat-button (click)="drawMenu()" *ngIf="!isDrawed">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
+    <mat-toolbar class="header-bar" color="primary">
+      <div class="header-logo d-flex justify-content-center align-items-center">
+        <img
+          src="../../../assets/images/logo.png"
+          alt="Cinema logo"
+          width="95px"
+        />
+      </div>
+      <div class="header-title">
+        <h1 class="header-title-text">CineMEOW</h1>
+      </div>
+      <div
+        class="header-menu-toggle d-flex justify-content-center align-items-center"
+      >
+        <button mat-button (click)="drawMenu()" *ngIf="!isDrawed">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
 
     <div
       class="header-menu"
@@ -60,9 +69,16 @@
       "
     >
       <mat-toolbar>
-        <button mat-button (click)="drawMenu()">
-          <mat-icon>menu</mat-icon>Menu
-        </button>
+        <mat-toolbar-row class="p-0" style="height: 100px">
+          <button
+            mat-button
+            (click)="drawMenu()"
+            style="width: 100%; height: 100%;"
+          >
+            <mat-icon>close</mat-icon>Menu
+          </button>
+        </mat-toolbar-row>
+        <mat-divider> </mat-divider>
         <mat-toolbar-row>
           <span>Trang chu</span>
         </mat-toolbar-row>

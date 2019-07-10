@@ -1,0 +1,36 @@
+<mat-tab-group mat-align-tabs="center" *ngIf="nowShowingList && comingSoonList">
+  <mat-tab label="Phim dang chieu">
+    <ng-container *ngIf="nowShowingList.length > 0; else noMovieFound">
+      <div class="container d-flex flex-wrap justify-content-start">
+        <app-movie-item
+          [movie]="movie"
+          *ngFor="let movie of nowShowingList"
+          [ngClass]="{
+            'large-screen': !(isSmall$ | async),
+            'small-screen': isSmall$ | async
+          }"
+        ></app-movie-item>
+      </div>
+    </ng-container>
+  </mat-tab>
+  <mat-tab class="d-flex" label="Phim sap chieu">
+    <ng-container *ngIf="comingSoonList.length > 0; else noMovieFound">
+      <div class="container d-flex flex-wrap justify-content-start">
+        <app-movie-item
+          [movie]="movie"
+          *ngFor="let movie of comingSoonList"
+          [ngClass]="{
+            'large-screen': !(isSmall$ | async),
+            'small-screen': isSmall$ | async
+          }"
+        ></app-movie-item>
+      </div>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #noMovieFound>
+  <div class="container">
+    <h1>Khong co phim trong muc nay</h1>
+  </div>
+</ng-template>

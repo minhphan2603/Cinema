@@ -1,0 +1,43 @@
+<div class="movie-detail container my-5" *ngIf="movieDetail; else loadingTemp">
+  <div>
+    <div class="row my-5">
+      <div class="col-4 d-flex justify-content-center">
+        <img
+          [src]="movieDetail.HinhAnh"
+          [alt]="movieDetail.TenPhim"
+          width="75%"
+        />
+      </div>
+      <div class="col-8">
+        <p>Ten phim: {{ movieDetail.TenPhim }}</p>
+        <p>
+          Ngay khoi chieu: {{ movieDetail.NgayKhoiChieu | date: "dd-MM-yyyy" }}
+        </p>
+        <p>Danh gia: {{ movieDetail.DanhGia }}</p>
+      </div>
+    </div>
+    <div>
+      <h6>Mo ta:</h6>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+        iusto labore repellat minima corporis libero praesentium sapiente quae
+        vitae facilis ducimus blanditiis non iste provident atque ut dolore, ea
+        molestias?
+      </p>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemp>
+  <ngx-loading
+    [show]="true"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
+</ng-template>
+
+<div
+  class="background"
+  [ngStyle]="{ 'background-image': 'url(' + movieDetail?.HinhAnh + ')' }"
+  *ngIf="movieDetail"
+></div>

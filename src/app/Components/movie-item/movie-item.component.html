@@ -1,0 +1,12 @@
+<mat-card class="movie-card">
+  <img
+    mat-card-image
+    [src]="movie.HinhAnh"
+    [alt]="movie.TenPhim"
+    class="movie-card-img"
+  />
+  <mat-card-content>
+    <mat-card-title>{{ movie.TenPhim }}</mat-card-title>
+    <p>Danh gia: {{ movie.DanhGia }}</p>
+  </mat-card-content>
+</mat-card>

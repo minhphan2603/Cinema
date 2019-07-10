@@ -1,2 +1,12 @@
-<app-header></app-header>
-<app-cover></app-cover>
+<app-cover [movieList]="moviesInCover" id="cover"></app-cover>
+<app-show-time
+  [nowShowingList]="nowShowingList"
+  [comingSoonList]="comingSoonList"
+  id="showTime"
+></app-show-time>
+
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>
