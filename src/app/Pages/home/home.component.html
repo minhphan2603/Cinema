@@ -6,7 +6,7 @@
 ></app-show-time>
 
 <ngx-loading
-  [show]="loading"
+  [show]="!isDataLoaded"
   [config]="{ backdropBorderRadius: '3px' }"
   [template]="customLoadingTemplate"
 ></ngx-loading>

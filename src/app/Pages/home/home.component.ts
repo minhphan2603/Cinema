@@ -1,15 +1,24 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterViewChecked,
+  ViewChild,
+  AfterContentChecked
+} from "@angular/core";
 import { DataService } from "src/_core/data/data.service";
 import { Router } from "@angular/router";
+import { ShowTimeComponent } from "src/app/Components/show-time/show-time.component";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnInit, AfterViewChecked {
-  loading: boolean = true;
-  movieList: Array<any>;
+export class HomeComponent
+  implements OnInit, AfterContentChecked, AfterViewChecked {
+  isDataLoaded: boolean = false;
+  isViewLoaded: boolean = false;
+  movieList;
 
   nowShowingList: Array<any>;
 
@@ -17,17 +26,28 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   moviesInCover: Array<any>;
 
+  @ViewChild(ShowTimeComponent, { static: false }) showTime: ShowTimeComponent;
+
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.getMovieListAndClassify();
   }
 
-  ngAfterViewChecked() {
-    if (window.history.state.scrollTo && this.movieList) {
-      const id = window.history.state.scrollTo;
-      document.getElementById(id).scrollIntoView({ block: "start" });
+  ngAfterContentChecked() {
+    if (window.history.state.scrollTo && this.isViewLoaded) {
+      const { id, tabIndex } = window.history.state.scrollTo;
       delete window.history.state.scrollTo;
+      document.getElementById(id).scrollIntoView({ block: "start" });
+      if (tabIndex) {
+        this.showTime.matTabGroup.selectedIndex = parseInt(tabIndex);
+      }
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.isDataLoaded) {
+      this.isViewLoaded = true;
     }
   }
 
@@ -59,11 +79,11 @@ export class HomeComponent implements OnInit, AfterViewChecked {
           0,
           this.nowShowingList.length > 5 ? 5 : this.nowShowingList.length
         );
-        this.loading = false;
+        this.isDataLoaded = true;
       },
       err => {
         console.log(err);
-        this.loading = false;
+        this.isDataLoaded = true;
       }
     );
   }

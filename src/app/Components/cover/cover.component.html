@@ -1,5 +1,5 @@
-<ngb-carousel class="cover">
+<ngb-carousel class="cover" [showNavigationIndicators]="false">
   <ng-template ngbSlide *ngFor="let movie of movieList">
-    <img src="{{ movie.HinhAnh }}" alt="Now Showing Movie" />
+    <img src="{{ movie.HinhAnh }}" alt="Now Showing Movie" width="100%" />
   </ng-template>
 </ngb-carousel>

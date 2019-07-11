@@ -1,8 +1,5 @@
 <ng-container *ngIf="!(isSmall$ | async); else hiddenHeader">
-  <mat-toolbar
-    class="showed-header d-flex justify-content-between"
-    color="primary"
-  >
+  <mat-toolbar class="showed-header d-flex justify-content-between">
     <div class="header-logo col-2">
       <span>
         <img
@@ -16,7 +13,7 @@
         <a (click)="scrollTo('/', 'cover')">Trang chu</a>
       </span>
       <span class="header-content-item">
-        <a (click)="scrollTo('/', 'showTime')">Lich chieu</a>
+        <a (click)="scrollTo('/', 'showTime', '0')">Lich chieu</a>
       </span>
       <span class="header-content-item">Tin tuc</span>
     </div>
@@ -40,12 +37,13 @@
 </ng-container>
 <ng-template #hiddenHeader>
   <div class="hidden-header">
-    <mat-toolbar class="header-bar" color="primary">
+    <mat-toolbar class="header-bar">
       <div class="header-logo d-flex justify-content-center align-items-center">
         <img
           src="../../../assets/images/logo.png"
           alt="Cinema logo"
           width="95px"
+          (click)="scrollTo('/', 'cover')"
         />
       </div>
       <div class="header-title">
@@ -80,13 +78,19 @@
         </mat-toolbar-row>
         <mat-divider> </mat-divider>
         <mat-toolbar-row>
-          <span>Trang chu</span>
+          <span (click)="scrollTo('/', 'cover')" (click)="drawMenu()"
+            >Trang chu</span
+          >
         </mat-toolbar-row>
         <mat-toolbar-row>
-          <span>Phim dang chieu</span>
+          <span (click)="scrollTo('/', 'showTime', '0')" (click)="drawMenu()"
+            >Phim dang chieu</span
+          >
         </mat-toolbar-row>
         <mat-toolbar-row>
-          <span>Phim sap chieu</span>
+          <span (click)="scrollTo('/', 'showTime', '1')" (click)="drawMenu()"
+            >Phim sap chieu</span
+          >
         </mat-toolbar-row>
         <mat-toolbar-row>
           <span>Tin tuc</span>

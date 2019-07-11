@@ -25,11 +25,8 @@ export class HeaderComponent {
     this.isDrawed = !this.isDrawed;
   }
 
-  scrollTo(path, id) {
-    this.router.navigate([path], { state: { scrollTo: id } }).then(val => {
-      if (val === null) {
-        document.getElementById(id).scrollIntoView();
-      }
-    });
+  scrollTo(route, id, tabIndex) {
+    this.router.onSameUrlNavigation = "reload";
+    this.router.navigate([route], { state: { scrollTo: { id, tabIndex } } });
   }
 }
