@@ -1,0 +1,33 @@
+<div class="register container" style="padding-top: 100px">
+  <h1>DANG KY</h1>
+  <form #registerForm="ngForm" class="form d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap ten Tai Khoan cua ban!</mat-label>
+      <input matInput ngModel name="userName" />
+      <mat-error *ngIf=""> </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap mat khau</mat-label>
+      <input matInput ngModel name="password" />
+      <mat-error *ngIf=""></mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap email cua ban!</mat-label>
+      <input matInput ngModel name="email" />
+      <mat-error *ngIf=""> </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap so dien thoai cua ban!</mat-label>
+      <input matInput ngModel name="phone" />
+      <mat-error *ngIf=""> </mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-button type="submit" (click)="submitForm(registerForm)">
+        Dang ky
+      </button>
+      <button mat-button type="reset" (click)="clearForm(registerForm)">
+        Huy
+      </button>
+    </div>
+  </form>
+</div>

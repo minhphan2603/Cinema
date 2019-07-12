@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: "phim",
     loadChildren: "./Pages/movie-detail/movie-detail.module#MovieDetailModule"
+  },
+  {
+    path: "dang-ky",
+    loadChildren: "./Pages/register/register.module#RegisterModule"
   }
 ];
 
