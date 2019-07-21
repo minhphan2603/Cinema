@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: "dang-ky",
     loadChildren: "./Pages/register/register.module#RegisterModule"
+  },
+  {
+    path: "dang-nhap",
+    loadChildren: "./Pages/login/login.module#LoginModule"
   }
 ];
 

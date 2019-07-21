@@ -1,0 +1,33 @@
+<div class="login container" style="padding-top: 100px">
+  <h1>DANG NHAP</h1>
+  <form [formGroup]="loginForm" class="form d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap ten Tai Khoan cua ban!</mat-label>
+      <input matInput formControlName="userName" />
+      <mat-error *ngIf="loginForm.controls.userName.errors">
+        <div>{{ getErrorMessage("userName", "Tai khoan") }}</div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap mat khau</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="loginForm.controls.password.errors">
+        <div>{{ getErrorMessage("password", "Mat Khau") }}</div>
+      </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button
+        mat-button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        (click)="submitForm()"
+      >
+        Dang nhap
+      </button>
+      <button mat-button type="reset">
+        Huy
+      </button>
+    </div>
+  </form>
+</div>

@@ -13,24 +13,38 @@
         <a (click)="scrollTo('/', 'cover')">Trang chu</a>
       </span>
       <span class="header-content-item">
-        <a (click)="scrollTo('/', 'showTime', '0')">Lich chieu</a>
+        <a (click)="scrollTo('/', 'showTime', '0')">Phim dang chieu</a>
+      </span>
+      <span class="header-content-item">
+        <a (click)="scrollTo('/', 'showTime', '1')">Phim sap chieu</a>
       </span>
       <span class="header-content-item">Tin tuc</span>
     </div>
     <div
       class="header-authentication d-flex align-items-center col-4 justify-content-end"
     >
-      <ng-container *ngIf="isAuthenticated; else anonymousTemp">
+      <ng-container *ngIf="isAuthenticated | async; else anonymousTemp">
         <span class="header-authentication-item" matTooltip="Tai Khoan">
           <i class="material-icons">account_circle</i>
+          <p>Xin chao {{ profile.TaiKhoan }}</p>
         </span>
-        <span class="header-authentication-item">Dang xuat</span>
+        <span class="header-authentication-item" (click)="logout()"
+          >Dang xuat</span
+        >
       </ng-container>
       <ng-template #anonymousTemp>
-        <span class="header-authentication-item d-flex align-items-center"
+        <span
+          class="header-authentication-item d-flex align-items-center"
+          (click)="router.navigate(['/dang-nhap'])"
+          style="cursor: pointer"
           ><i class="material-icons mr-2">input</i>Dang nhap</span
         >
-        <span class="header-authentication-item">Dang ki</span>
+        <span
+          class="header-authentication-item"
+          (click)="router.navigate(['/dang-ky'])"
+          style="cursor: pointer"
+          >Dang ki</span
+        >
       </ng-template>
     </div>
   </mat-toolbar>

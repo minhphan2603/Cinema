@@ -8,7 +8,12 @@ export const environment = {
     "http://svcy2.myclass.vn/api/QuanLyPhim/LayDanhSachPhim?MaNhom=GP06",
   movieDetailURL: id =>
     `http://svcy2.myclass.vn/api/QuanLyPhim/LayChiTietPhim?MaPhim=${id}`,
-  registerUserURL: "http://svcy2.myclass.vn/api/QuanLyNguoiDung/ThemNguoiDung"
+  registerUserURL: "http://svcy2.myclass.vn/api/QuanLyNguoiDung/ThemNguoiDung",
+  loginUserURL: (
+    userName,
+    password
+  ) => `http://svcy2.myclass.vn/api/QuanLyNguoiDung/DangNhap?TaiKhoan=${userName}&MatKhau=${password}
+  `
 };
 
 /*

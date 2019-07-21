@@ -1,34 +1,53 @@
-<mat-tab-group mat-align-tabs="center" #matTabGroup>
-  <ng-container *ngIf="nowShowingList && comingSoonList">
-    <mat-tab label="Phim dang chieu">
-      <ng-container *ngIf="nowShowingList.length > 0; else noMovieFound">
-        <div class="container d-flex flex-wrap justify-content-start">
-          <app-movie-item
-            [movie]="movie"
-            *ngFor="let movie of nowShowingList"
-            [ngClass]="{
-              'large-screen': !(isSmall$ | async),
-              'small-screen': isSmall$ | async
-            }"
-          ></app-movie-item>
-        </div>
-      </ng-container>
-    </mat-tab>
-    <mat-tab class="d-flex" label="Phim sap chieu">
-      <ng-container *ngIf="comingSoonList.length > 0; else noMovieFound">
-        <div class="container d-flex flex-wrap justify-content-start">
-          <app-movie-item
-            [movie]="movie"
-            *ngFor="let movie of comingSoonList"
-            [ngClass]="{
-              'large-screen': !(isSmall$ | async),
-              'small-screen': isSmall$ | async
-            }"
-          ></app-movie-item>
-        </div>
-      </ng-container>
-    </mat-tab>
-  </ng-container>
+<mat-tab-group
+  mat-align-tabs="center"
+  id="showTime"
+  [selectedIndex]="selectedIndex"
+  (selectedIndexChange)="changeSelectedIndex($event)"
+>
+  <mat-tab label="Phim dang chieu">
+    <ng-container *ngIf="nowShowingList.length > 0; else noMovieFound">
+      <ngb-carousel [showNavigationIndicators]="false" #nowShowingCarousel>
+        <ng-template ngbSlide *ngFor="let movies of nowShowingMatrix">
+          <div
+            class="container d-flex flex-wrap justify-content-start"
+            style="height: 900px"
+          >
+            <app-movie-item
+              [movie]="movie"
+              *ngFor="let movie of movies"
+              [ngClass]="{
+                'large-screen': isLarge$ | async,
+                'medium-screen': isMedium$ | async,
+                'small-screen': isSmall$ | async
+              }"
+            ></app-movie-item>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </ng-container>
+  </mat-tab>
+  <mat-tab class="d-flex" label="Phim sap chieu">
+    <ng-container *ngIf="comingSoonList.length > 0; else noMovieFound">
+      <ngb-carousel [showNavigationIndicators]="false" #comingSoonCarousel>
+        <ng-template ngbSlide *ngFor="let movies of comingSoonMatrix">
+          <div
+            class="container d-flex flex-wrap justify-content-start"
+            style="height: 900px"
+          >
+            <app-movie-item
+              [movie]="movie"
+              *ngFor="let movie of movies"
+              [ngClass]="{
+                'large-screen': isLarge$ | async,
+                'medium-screen': isMedium$ | async,
+                'small-screen': isSmall$ | async
+              }"
+            ></app-movie-item>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </ng-container>
+  </mat-tab>
 </mat-tab-group>
 
 <ng-template #noMovieFound>

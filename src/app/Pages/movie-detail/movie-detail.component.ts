@@ -25,8 +25,12 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getMovieDetail() {
-    this.dataService
-      .getMovieDetail$(this.movieId)
-      .subscribe(data => (this.movieDetail = data));
+    this.dataService.getMovieDetail$(this.movieId).subscribe(
+      data => (this.movieDetail = data),
+      err => {
+        console.log(err);
+        this.movieDetail = [];
+      }
+    );
   }
 }

@@ -11,4 +11,9 @@ export class UserService {
     const { registerUserURL } = environment;
     return this.http.post(registerUserURL, newUser);
   }
+  login(user) {
+    const { loginUserURL } = environment;
+    const { userName, password } = user;
+    return this.http.post(loginUserURL(userName, password), null);
+  }
 }

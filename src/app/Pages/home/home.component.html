@@ -1,9 +1,10 @@
 <app-cover [movieList]="moviesInCover" id="cover"></app-cover>
-<app-show-time
-  [nowShowingList]="nowShowingList"
-  [comingSoonList]="comingSoonList"
-  id="showTime"
-></app-show-time>
+<div *ngIf="isDataLoaded" style="height: 1000px">
+  <app-show-time
+    [nowShowingList]="nowShowingList"
+    [comingSoonList]="comingSoonList"
+  ></app-show-time>
+</div>
 
 <ngx-loading
   [show]="!isDataLoaded"

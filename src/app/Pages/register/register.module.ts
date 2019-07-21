@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { RegisterRoutingModule } from "./register-routing.module";
 import { RegisterComponent } from "./register.component";
 import { MaterialModule } from "src/_core/material/material.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SuccessfullRegisterComponent } from "./successfull-register.component";
 
@@ -14,7 +14,7 @@ import { SuccessfullRegisterComponent } from "./successfull-register.component";
     CommonModule,
     RegisterRoutingModule,
     MaterialModule,
-    FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   entryComponents: [SuccessfullRegisterComponent]
