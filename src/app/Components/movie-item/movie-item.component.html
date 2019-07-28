@@ -1,12 +1,24 @@
-<mat-card class="movie-card">
-  <img
-    mat-card-image
-    [src]="movie.HinhAnh"
-    [alt]="movie.TenPhim"
-    class="movie-card-img"
-  />
-  <mat-card-content>
-    <mat-card-title>{{ movie.TenPhim }}</mat-card-title>
-    <p>Danh gia: {{ movie.DanhGia }}</p>
-  </mat-card-content>
-</mat-card>
+<div class="movie-item">
+  <mat-card class="movie-card">
+    <img
+      mat-card-image
+      [src]="movie.HinhAnh"
+      [alt]="movie.TenPhim"
+      class="movie-card-img"
+    />
+    <mat-card-content>
+      <mat-card-title>{{ movie.TenPhim }}</mat-card-title>
+      <p>Danh gia: {{ movie.DanhGia }}</p>
+    </mat-card-content>
+  </mat-card>
+  <div class="movie-item-hover" #hover>
+    <div class="video">
+      <i class="material-icons">play_circle_outline</i>
+    </div>
+    <div class="ticket-button">
+      <button mat-button (click)="navigate('/phim/' + movie.MaPhim)">
+        Mua ve
+      </button>
+    </div>
+  </div>
+</div>

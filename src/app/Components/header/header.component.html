@@ -24,9 +24,21 @@
       class="header-authentication d-flex align-items-center col-4 justify-content-end"
     >
       <ng-container *ngIf="isAuthenticated | async; else anonymousTemp">
-        <span class="header-authentication-item" matTooltip="Tai Khoan">
+        <span class="header-authentication-item">
+          Xin chao
+          {{
+            !profile.HoTen || profile.HoTen === ""
+              ? profile.TaiKhoan
+              : profile.HoTen
+          }}
+        </span>
+        <span
+          class="header-authentication-item"
+          matTooltip="Tai Khoan"
+          (click)="router.navigate(['/tai-khoan'])"
+          style="cursor: pointer"
+        >
           <i class="material-icons">account_circle</i>
-          <p>Xin chao {{ profile.TaiKhoan }}</p>
         </span>
         <span class="header-authentication-item" (click)="logout()"
           >Dang xuat</span

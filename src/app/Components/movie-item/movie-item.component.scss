@@ -1,8 +1,56 @@
-.movie-card {
-  width: 100%;
-  height: 400px;
-  .movie-card-img {
-    height: 300px;
+@import "variables.scss";
+
+.movie-item {
+  position: relative;
+  .movie-card {
+    width: 100%;
+    height: 400px;
+    .movie-card-img {
+      height: 300px;
+    }
+    overflow: hidden;
   }
-  overflow: hidden;
+  .movie-item-hover {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba($color: #000000, $alpha: 0),
+      rgba($color: #000000, $alpha: 0.8),
+      rgba($color: #000000, $alpha: 1)
+    );
+    .video {
+      height: 300px;
+      position: relative;
+      i.material-icons {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: $fs-4 + 40;
+        color: white;
+        font-weight: lighter;
+      }
+    }
+    .ticket-button {
+      position: relative;
+      height: 100px;
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: $fs-2;
+        width: 80%;
+        height: 50%;
+        color: white;
+        background-color: red;
+      }
+    }
+  }
 }

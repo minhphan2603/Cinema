@@ -5,28 +5,48 @@
       <mat-label>Nhap ten Tai Khoan cua ban!</mat-label>
       <input matInput formControlName="userName" />
       <mat-error *ngIf="registerForm.controls.userName.errors">
-        <div>{{ getErrorMessage("userName", "Tai khoan") }}</div>
+        <p>{{ getErrorMessage("userName", "Tai khoan") }}</p>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Nhap mat khau</mat-label>
       <input matInput type="password" formControlName="password" />
       <mat-error *ngIf="registerForm.controls.password.errors">
-        <div>{{ getErrorMessage("password", "Mat Khau") }}</div>
+        <p>{{ getErrorMessage("password", "Mat Khau") }}</p>
       </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap lai mat khau</mat-label>
+      <input matInput type="password" formControlName="password2" />
+      <mat-error *ngIf="registerForm.controls.password2.errors">
+        <p>{{ getErrorMessage("password2", " lai Mat Khau") }}</p>
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="registerForm.errors">
+      <p>
+        {{
+          !registerForm.controls.password2.errors
+            ? "Mat khau khong trung khop!"
+            : ""
+        }}
+      </p>
+    </mat-error>
+    <mat-form-field appearance="outline">
+      <mat-label>Nhap ho ten</mat-label>
+      <input matInput formControlName="fullName" />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Nhap email cua ban!</mat-label>
       <input matInput formControlName="email" />
       <mat-error *ngIf="registerForm.controls.email.errors">
-        <div>{{ getErrorMessage("email", "Email") }}</div>
+        <p>{{ getErrorMessage("email", "Email") }}</p>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Nhap so dien thoai cua ban!</mat-label>
       <input matInput formControlName="phone" />
       <mat-error *ngIf="registerForm.controls.phone.errors">
-        <div>{{ getErrorMessage("phone", "So dien thoai") }}</div>
+        <p>{{ getErrorMessage("phone", "So dien thoai") }}</p>
       </mat-error>
     </mat-form-field>
     <div>

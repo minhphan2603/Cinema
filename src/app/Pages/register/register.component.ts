@@ -5,6 +5,7 @@ import { MatSnackBar, MatDialog } from "@angular/material";
 import { SuccessfullRegisterComponent } from "./successfull-register.component";
 import { Router } from "@angular/router";
 import { StoreService } from "src/_core/store/store.service";
+import { checkConfirmedPassword } from "../../../_core/validators/validators";
 // import { delay } from "rxjs/operators";
 
 @Component({
@@ -13,23 +14,28 @@ import { StoreService } from "src/_core/store/store.service";
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
-  registerForm = new FormGroup({
-    userName: new FormControl(null, [
-      Validators.required,
-      Validators.maxLength(20),
-      Validators.minLength(6),
-      Validators.pattern("^[a-zA-Z0-9]*$")
-    ]),
-    password: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(6)
-    ]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    phone: new FormControl(null, [
-      Validators.required,
-      Validators.pattern("(0)([1-9])([0-9]{8})")
-    ])
-  });
+  registerForm = new FormGroup(
+    {
+      userName: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(6),
+        Validators.pattern("^[a-zA-Z0-9]*$")
+      ]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      password2: new FormControl(null, [Validators.required]),
+      fullName: new FormControl(null),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      phone: new FormControl(null, [
+        Validators.required,
+        Validators.pattern("(0)([1-9])([0-9]{8})")
+      ])
+    },
+    checkConfirmedPassword()
+  );
 
   constructor(
     private userService: UserService,
@@ -45,6 +51,7 @@ export class RegisterComponent implements OnInit {
     const newUser = {
       TaiKhoan: this.registerForm.value.userName,
       MatKhau: this.registerForm.value.password,
+      HoTen: this.registerForm.value.fullName,
       Email: this.registerForm.value.email,
       SoDT: this.registerForm.value.phone,
       MaNhom: "GP06",

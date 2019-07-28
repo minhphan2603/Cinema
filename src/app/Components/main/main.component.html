@@ -1,0 +1,14 @@
+<app-cover [movieList]="moviesInCover" id="cover"></app-cover>
+
+<div *ngIf="isDataLoaded" style="height: 1000px">
+  <app-show-time
+    [nowShowingList]="nowShowingList"
+    [comingSoonList]="comingSoonList"
+  ></app-show-time>
+</div>
+
+<ngx-loading
+  [show]="!isDataLoaded"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>

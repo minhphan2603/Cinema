@@ -1,10 +1,19 @@
+@import "variables.scss";
+
+.movie-detail {
+  margin-top: 20vh;
+  color: white;
+  font-size: $fs-2;
+}
+
 .background {
   position: fixed;
   top: 0;
   bottom: 0;
   width: 100%;
   z-index: -1;
+  margin-top: 100px;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: blur(30px);
+  filter: blur(10px);
 }
